@@ -468,3 +468,14 @@ class BrowserQuery(Query):
             el.send_keys(text)
 
         self.map(_fill, 'fill({!r})'.format(text)).execute()
+
+
+    def sub_query(self, css=None):
+        """
+        Execute a subquery on the browser
+        """
+        if css is None:
+            # only css is supported at this time
+            return None
+
+        return self.map(lambda el: el.find_elements_by_css_selector(css), 'query for subelements').results
