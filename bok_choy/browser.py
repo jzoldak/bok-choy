@@ -137,7 +137,7 @@ def save_driver_logs(driver, prefix):
     Returns:
         None
     """
-    log_types = ['browser', 'driver', 'client', 'server']
+    log_types = ['browser', 'driver']
     for log_type in log_types:
         try:
             log = driver.get_log(log_type)
@@ -497,6 +497,7 @@ def _capabilities_dict(envs, tags):
         'max-duration': 600,
         'public': 'public restricted',
         'tags': tags,
+        'loggingPrefs': {'browser':'WARNING', 'driver': 'WARNING'},
     }
 
     # Add SauceLabs specific environment vars if they are set.
